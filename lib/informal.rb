@@ -1,3 +1,1 @@
-module Informal
-  # Your code goes here...
-end
+require "informal/model"

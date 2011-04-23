@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "informal"
   s.version     = Informal::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Josh Susser"]
+  s.email       = ["josh@hasmanythrough.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Easily use any Plain Old Ruby Object as the model for Rails form helpers.}
+  s.description = %q{Easily use any Plain Old Ruby Object as the model for Rails form helpers.}
 
   s.rubyforge_project = "informal"
 
@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  s.add_dependency('activemodel', "~> 3.0")
 end
