@@ -2,7 +2,6 @@ require "test/unit"
 
 require "rubygems"
 require "bundler/setup"
-require "active_model"
 
 require "informal/model"
 require "informal/model_no_init"

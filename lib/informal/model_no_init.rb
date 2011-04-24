@@ -1,3 +1,4 @@
+require "active_model"
 module Informal
   module ModelNoInit
     def self.included(klass)
