@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Josh Susser"]
   s.email       = ["josh@hasmanythrough.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/joshsusser/informal"
   s.summary     = %q{Easily use any Plain Old Ruby Object as the model for Rails form helpers.}
   s.description = %q{Easily use any Plain Old Ruby Object as the model for Rails form helpers.}
 
