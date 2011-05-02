@@ -1,4 +1,6 @@
 module ModelTestCases
+  include ActiveModel::Lint::Tests
+
   def setup
     @model = self.poro_class.new(:x => 1, :y => 2)
   end
@@ -7,6 +9,10 @@ module ModelTestCases
     assert_equal 1, @model.x
     assert_equal 2, @model.y
     assert_nil @model.z
+  end
+
+  def test_persisted
+    assert !@model.persisted?
   end
 
   def test_new_record
