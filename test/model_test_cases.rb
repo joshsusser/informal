@@ -11,6 +11,11 @@ module ModelTestCases
     assert_nil @model.z
   end
 
+  def test_new_with_nil
+    @model = self.poro_class.new(nil)
+    assert_not_nil @model
+  end
+
   def test_persisted
     assert !@model.persisted?
   end
