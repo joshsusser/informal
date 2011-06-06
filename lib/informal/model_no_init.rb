@@ -9,8 +9,7 @@ module Informal
     end
 
     def attributes=(attrs)
-      return unless attrs.is_a? Hash
-      attrs.each_pair { |name, value| self.send("#{name}=", value) }
+      attrs && attrs.each_pair { |name, value| self.send("#{name}=", value) }
     end
 
     def persisted?
