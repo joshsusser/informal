@@ -5,6 +5,15 @@ module Informal
       klass.class_eval do
         extend  ActiveModel::Naming
         include ActiveModel::Validations
+        extend  ClassMethods
+      end
+    end
+
+    module ClassMethods
+      if ActiveModel::VERSION::MINOR > 0
+        def informal_model_name(name)
+          @_model_name = ActiveModel::Name.new(self, nil, name)
+        end
       end
     end
 

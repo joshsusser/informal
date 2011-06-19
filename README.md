@@ -60,6 +60,31 @@ Make your own `#initialize` method, and in that you can assign the attributes
 using the `#attributes=` method and also call super with whatever args are
 needed.
 
+## Overriding the `model_name`
+
+If you name your model `InformalCommand`, form params get passed to your controller
+in the `params[:informal_command]` hash. As that's a bit ugly and perhaps doesn't
+play well with standing in for a real ActiveRecord model, Informal provides a
+method to override the model name.
+
+    class InformalCommand
+      informal_model_name "Command"
+      # ...
+    end
+
+Note: the `informal_model_name` feature is available only in Rails 3.1 or greater
+(unless somebody back-ports the required API change to 3.0.x).
+
+## Idiosyncrasies
+
+The standard way that Rails generates ids for new records is to name them like
+`command_new`, as opposed to `command_17` for persisted records. I've found that
+when using informal models I often want more than one per page, and it's helpful
+to have a unique id for JavaScript to use. Therefore Informal uses the model's
+`object_id` to get a unique id for the record. Those ids in the DOM will look like
+`command_2157193640`, which would be scary if you did anything with those memory
+addresses except use them for attaching scripts.
+
 ## License
 
-Released under the MIT License.  See the LICENSE file.
+Copyright © 2011 Josh Susser. Released under the MIT License. See the LICENSE file.

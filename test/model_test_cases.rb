@@ -5,6 +5,10 @@ module ModelTestCases
     @model = self.poro_class.new(:x => 1, :y => 2)
   end
 
+  def teardown
+    self.poro_class.instance_variable_set(:@_model_name, nil)
+  end
+
   def test_new
     assert_equal 1, @model.x
     assert_equal 2, @model.y
@@ -29,6 +33,13 @@ module ModelTestCases
 
   def test_naming
     assert_equal "Poro", @model.class.model_name.human
+  end
+
+  if ActiveModel::VERSION::MINOR > 0
+    def test_model_name_override
+      self.poro_class.informal_model_name("Alias")
+      assert_equal "Alias", @model.class.model_name.human
+    end
   end
 
   def test_validations
