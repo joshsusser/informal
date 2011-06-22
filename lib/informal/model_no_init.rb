@@ -1,4 +1,6 @@
 require "active_model"
+require "informal/model_name"
+
 module Informal
   module ModelNoInit
     def self.included(klass)
@@ -13,6 +15,10 @@ module Informal
       if ActiveModel::VERSION::MINOR > 0
         def informal_model_name(name)
           @_model_name = ActiveModel::Name.new(self, nil, name)
+        end
+      else
+        def informal_model_name(name)
+          @_model_name = ModelName.new(name)
         end
       end
     end

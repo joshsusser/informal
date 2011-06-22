@@ -35,11 +35,9 @@ module ModelTestCases
     assert_equal "Poro", @model.class.model_name.human
   end
 
-  if ActiveModel::VERSION::MINOR > 0
-    def test_model_name_override
-      self.poro_class.informal_model_name("Alias")
-      assert_equal "Alias", @model.class.model_name.human
-    end
+  def test_model_name_override
+    self.poro_class.informal_model_name("Alias")
+    assert_equal "Alias", @model.class.model_name.human
   end
 
   def test_validations
