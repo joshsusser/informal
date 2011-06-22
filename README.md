@@ -72,9 +72,6 @@ method to override the model name.
       # ...
     end
 
-Note: the `informal_model_name` feature is available only in Rails 3.1 or greater
-(unless somebody back-ports the required API change to 3.0.x).
-
 ## Idiosyncrasies
 
 The standard way that Rails generates ids for new records is to name them like
