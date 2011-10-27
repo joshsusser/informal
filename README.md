@@ -14,14 +14,14 @@ Here's a quick (and slightly insane) example:
       validates_presence_of :command
       def run; `#{command} #{args}`; end
     end
-    
+
     # views/commands/new.html.erb
     <%= form_for @command do |form| %>
       <%= form.text_field :command %>
       <%= form.text_field :args %>
       <%= form.submit "Do It!" %>
     <% end %>
-    
+
     # controllers/commands_controller.rb
     def create
       command = Command.new(params[:command])
