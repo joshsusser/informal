@@ -19,7 +19,5 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency('activemodel', "~> 3.0")
-  # s.add_dependency('activemodel', "~> 3.0.0")     # to test w/o 3.1 only features
-  # s.add_dependency('activemodel', "~> 3.1.0.rc4") # to test 3.1 only features, ex: informal_model_name
+  s.add_dependency('activemodel', ">= 3.0")
 end

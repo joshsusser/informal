@@ -1,7 +1,17 @@
 require "active_model"
+require "active_support/core_ext/module/attribute_accessors"
+
 module Informal
+  mattr_accessor :suggest_active_model_model
+  self.suggest_active_model_model = true
+
   module ModelNoInit
     def self.included(klass)
+      if defined?(ActiveModel::Model) && Informal.suggest_active_model_model
+        ActiveSupport::Deprecation.warn("This version of Active Model has ActiveModel::Model, which is very similar to Informal::Model and Informal::ModelNoInit. Consider including ActiveModel::Model instead. You can silence this warning by setting Informal.suggest_active_model_model = false before you include this module.",
+                                        caller.reject { |s| s.include? "lib/informal" })
+      end
+
       klass.class_eval do
         extend  ActiveModel::Naming
         include ActiveModel::Validations
