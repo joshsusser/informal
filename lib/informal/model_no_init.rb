@@ -15,6 +15,16 @@ module Informal
           @_model_name = ActiveModel::Name.new(self, nil, name)
         end
       end
+
+      # Provide a class level cache for #to_partial_path. This is an
+      # internal method and should not be accessed directly.
+      def _to_partial_path #:nodoc:
+        @_to_partial_path ||= begin
+          element = ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(self))
+          collection = ActiveSupport::Inflector.tableize(self)
+          "#{collection}/#{element}".freeze
+        end
+      end
     end
 
     def attributes=(attrs)
@@ -39,6 +49,10 @@ module Informal
 
     def to_param
       nil
+    end
+
+    def to_partial_path
+      self.class._to_partial_path
     end
   end
 end
